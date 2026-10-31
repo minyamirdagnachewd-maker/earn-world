@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Earn World helps people discover skills, work opportunities and practical online-business learning, with a special focus on Ethiopia.">
+<title>Earn World — Learn Skills. Find Opportunities.</title>
+<style>
+:root {
+  --site-primary: #145c49;
+  --site-on-primary: #ffffff;
+  --site-secondary: #f1c56b;
+  --site-on-secondary: #252016;
+  --site-background: #f6f8f4;
+  --site-on-background: #17251f;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: light-dark(var(--site-background), #111b17); color: light-dark(var(--site-on-background), #edf4ef); overflow: hidden; }
+a { color: inherit; }
+.topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding: calc(18px * var(--site-spacing-scale)) max(5vw, 22px); background: var(--site-primary); color: var(--site-on-primary); }
+.brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:850; letter-spacing:-.04em; font-size:1.25rem; }
+.brand-mark { width:36px; height:36px; border-radius:12px; display:grid; place-items:center; background:var(--site-secondary); color:var(--site-on-secondary); font-weight:900; }
+nav { display:flex; flex-wrap:wrap; gap:18px; align-items:center; }
+nav a { text-decoration:none; font-size:.9rem; opacity:.94; }
+nav a:hover { text-decoration:underline; }
+.hero { position:relative; padding: clamp(58px, 9vw, 110px) max(5vw, 22px) 76px; background:linear-gradient(120deg, #145c49 0%, #1d765c 62%, #27866a 100%); color:white; }
+.hero:after { content:""; position:absolute; width:360px; height:360px; border:1px solid rgba(255,255,255,.18); border-radius:50%; right:-100px; top:-140px; box-shadow:0 0 0 42px rgba(255,255,255,.035),0 0 0 90px rgba(255,255,255,.025); opacity:var(--site-decoration-opacity); pointer-events:none; }
+.hero-inner { max-width:1080px; margin:auto; position:relative; z-index:1; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; color:#ffe2a0; font-weight:750; font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; }
+h1,h2,h3 { font-family:var(--site-font-heading); letter-spacing:-.04em; }
+h1 { max-width:760px; font-size:calc(clamp(2.5rem, 6.6vw, 5.4rem) * var(--site-heading-scale)); line-height:1.02; margin:20px 0; }
+.hero p { max-width:640px; color:#e1f0e8; line-height:1.7; font-size:1.1rem; }
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+.btn { display:inline-flex; justify-content:center; align-items:center; padding:13px 19px; border-radius:calc(13px * var(--site-radius-scale)); background:var(--site-secondary); color:var(--site-on-secondary); font-weight:800; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+.btn.secondary { background:transparent; color:white; border-color:rgba(255,255,255,.55); }
+.wrap { max-width:1080px; margin:auto; padding:64px max(5vw,22px); }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:26px; }
+.section-head h2 { font-size:calc(clamp(1.8rem, 3vw, 2.6rem) * var(--site-heading-scale)); margin:8px 0; }
+.kicker { color:#238064; text-transform:uppercase; letter-spacing:.13em; font-size:.74rem; font-weight:850; }
+.muted { color:light-dark(#63716a,#b3c1b8); line-height:1.65; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
+.card { border:1px solid light-dark(#dfe7df,#34453c); background:light-dark(#ffffff,#1b2922); border-radius:calc(19px * var(--site-radius-scale)); padding:24px; box-shadow:0 10px 26px rgba(22,57,40,.045); }
+.icon { width:44px; height:44px; border-radius:14px; display:grid; place-items:center; background:light-dark(#e8f3ed,#294438); font-size:1.35rem; }
+.card h3 { margin:17px 0 8px; font-size:1.15rem; }
+.card p { color:light-dark(#63716a,#b3c1b8); line-height:1.6; font-size:.94rem; margin:0; }
+.card .text-link { display:inline-block; margin-top:17px; color:light-dark(#145c49,#8cdbb7); font-weight:800; text-decoration:none; }
+.highlight { background:light-dark(#edf4ed,#1b2d24); }
+.ethiopia { background:linear-gradient(135deg,#123f34,#145c49); color:white; }
+.ethiopia .muted { color:#d4e8dc; }
+.ethiopia .kicker { color:#f4d17f; }
+.pill { display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(241,197,107,.17); color:#f7d88f; font-size:.75rem; font-weight:800; }
+.listing-tools { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 22px; }
+input,select { font:inherit; border:1px solid light-dark(#d5dfd6,#3b4d42); border-radius:11px; padding:12px 14px; background:light-dark(#fff,#1b2922); color:inherit; min-width:0; }
+input { flex:1; min-width:190px; }
+.opportunity { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.opportunity + .opportunity { margin-top:12px; }
+.badge { font-size:.72rem; font-weight:800; color:light-dark(#145c49,#a4e1c4); background:light-dark(#e8f3ed,#294438); padding:6px 9px; border-radius:999px; white-space:nowrap; }
+.notice { border-left:4px solid #d49b30; background:light-dark(#fff7e7,#342d1e); color:light-dark(#59451e,#f4dfae); padding:15px 17px; border-radius:0 12px 12px 0; line-height:1.55; font-size:.9rem; }
+.steps { counter-reset:step; }
+.step { display:flex; gap:15px; padding:15px 0; border-bottom:1px solid light-dark(#e1e8e1,#34453c); }
+.step:last-child { border:0; }
+.step:before { counter-increment:step; content:counter(step); flex:0 0 32px; height:32px; display:grid; place-items:center; border-radius:50%; background:var(--site-primary); color:white; font-weight:850; }
+.cta { background:var(--site-secondary); color:var(--site-on-secondary); border-radius:calc(22px * var(--site-radius-scale)); padding:34px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.cta h2 { margin:0 0 8px; font-size:calc(2rem * var(--site-heading-scale)); }
+.cta p { margin:0; line-height:1.6; max-width:600px; }
+.cta .btn { background:#173f32; color:white; }
+footer { background:light-dark(#102d24,#0b1510); color:#e4eee8; padding:35px max(5vw,22px); }
+.footer-inner { max-width:1080px; margin:auto; display:flex; justify-content:space-between; gap:22px; flex-wrap:wrap; }
+footer p { color:#b8c9bf; font-size:.86rem; line-height:1.6; max-width:550px; }
+footer a { color:#f4d17f; text-decoration:none; }
+.small { font-size:.8rem; }
+@media(max-width:760px) { nav { gap:11px; } nav a { font-size:.78rem; } .grid { grid-template-columns:1fr; } .section-head { display:block; } .cta { display:block; } .cta .btn { margin-top:20px; } }
+@media(max-width:480px) { .topbar { align-items:flex-start; flex-direction:column; } nav { gap:12px; } .hero { padding-top:55px; } }
+</style>
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+  <a class="brand" href="#home"><span class="brand-mark">EW</span><span>Earn World</span></a>
+  <nav aria-label="Main navigation">
+    <a href="#opportunities">Opportunities</a><a href="#learn">Learn</a><a href="#ethiopia">Ethiopia</a><a href="#safety">Stay safe</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <span class="eyebrow">🌍 Global opportunities · Ethiopia focus</span>
+    <h1>Build skills.<br>Find your next opportunity.</h1>
+    <p>Earn World is a learning and opportunity hub for people who want to develop useful skills, explore legitimate work, and grow small businesses—wherever they live.</p>
+    <div class="actions"><a class="btn" href="#opportunities">Explore opportunities <span aria-hidden="true">→</span></a><a class="btn secondary" href="#learn">Start learning</a></div>
+  </div>
+</section>
+<section class="wrap" id="opportunities">
+  <div class="section-head"><div><span class="kicker">Explore and grow</span><h2>Find a path that fits you</h2><p class="muted">Start with free information and build experience step by step.</p></div></div>
+  <div class="grid">
+    <article class="card"><div class="icon">💻</div><h3>Remote work</h3><p>Learn how remote jobs work, what employers look for, and how to prepare a clear application.</p><a class="text-link" href="#learn">Prepare for remote work →</a></article>
+    <article class="card"><div class="icon">🧩</div><h3>Freelancing</h3><p>Explore services such as writing, translation, design, research and virtual assistance.</p><a class="text-link" href="#learn">Explore useful skills →</a></article>
+    <article class="card"><div class="icon">🛍️</div><h3>Sell a service or product</h3><p>Understand how to describe an offer, reach customers and handle orders responsibly.</p><a class="text-link" href="#business">Plan a small business →</a></article>
+  </div>
+  <div class="listing-tools" aria-label="Opportunity filters"><input id="search" type="search" placeholder="Search topics, e.g. writing or design" aria-label="Search opportunities"><select id="category" aria-label="Filter by category"><option value="all">All categories</option><option value="learn">Free learning</option><option value="prepare">Career preparation</option><option value="business">Business basics</option></select></div>
+  <div id="opportunity-list" class="grid">
+    <article class="card opportunity-item" data-category="learn"><div><span class="badge">Free learning</span><h3>Build digital skills</h3><p>Practice spreadsheets, writing, communication and basic digital literacy using free lessons.</p></div></article>
+    <article class="card opportunity-item" data-category="prepare"><div><span class="badge">Career preparation</span><h3>Create a simple CV</h3><p>Prepare a one-page CV that explains your skills, projects and experience honestly.</p></div></article>
+    <article class="card opportunity-item" data-category="business"><div><span class="badge">Business basics</span><h3>Test a small business idea</h3><p>Talk to potential customers, compare costs and test demand before spending money.</p></div></article>
+  </div>
+  <p class="small muted">These are learning guides, not live job vacancies. We will add specific opportunities only after checking the source, requirements, location and payment terms.</p>
+</section>
+<section class="wrap highlight" id="ethiopia">
+  <div class="grid" style="grid-template-columns:1.15fr .85fr; align-items:center;">
+    <div class="ethiopia card" style="border:0; padding:34px;">
+      <span class="pill">🇪🇹 Ethiopia focus</span><h2 style="font-size:2.3rem; margin:18px 0 10px;">Local context. Global ambition.</h2>
+      <p class="muted">We aim to make online-work information easier to understand for people in Ethiopia, including practical notes about eligibility, language, internet access and payment methods.</p>
+    </div>
+    <div><span class="kicker">What we will prioritize</span><h2>Useful, realistic guidance</h2><ul class="muted" style="line-height:2; padding-left:20px;"><li>Opportunities open to applicants in Ethiopia</li><li>Clear payment and identity-verification requirements</li><li>Free courses and beginner-friendly skills</li><li>Amharic explanations alongside English</li></ul></div>
+  </div>
+</section>
+<section class="wrap" id="learn">
+  <div class="section-head"><div><span class="kicker">Start with what you have</span><h2>Learn before you spend</h2><p class="muted">You can begin with a phone, an internet connection and time to practice.</p></div></div>
+  <div class="grid">
+    <article class="card"><div class="icon">✍️</div><h3>Writing and communication</h3><p>Practice clear messages, summaries, product descriptions and professional email writing.</p></article>
+    <article class="card"><div class="icon">📊</div><h3>Digital basics</h3><p>Learn documents, spreadsheets, file organization, online research and safe account habits.</p></article>
+    <article class="card"><div class="icon">🤝</div><h3>Customer service</h3><p>Practice listening, answering questions politely and keeping promises to customers.</p></article>
+  </div>
+</section>
+<section class="wrap" id="business">
+  <div class="section-head"><div><span class="kicker">A simple starting plan</span><h2>Turn learning into progress</h2></div></div>
+  <div class="card steps">
+    <div class="step"><div><strong>Choose one useful skill</strong><p class="muted">Pick something you can practice consistently, such as writing, translation or spreadsheets.</p></div></div>
+    <div class="step"><div><strong>Create two or three sample projects</strong><p class="muted">Show what you can do. Do not claim client experience you do not have.</p></div></div>
+    <div class="step"><div><strong>Check opportunities carefully</strong><p class="muted">Confirm country eligibility, age rules, fees, payment methods and the identity of the organization.</p></div></div>
+    <div class="step"><div><strong>Start small and improve</strong><p class="muted">Ask for feedback, keep records and never promise results you cannot deliver.</p></div></div>
+  </div>
+</section>
+<section class="wrap" id="safety">
+  <div class="notice"><strong>Online safety comes first.</strong> Never pay a fee to unlock a promised job, share passwords or one-time codes, or trust guaranteed-income claims. Check the official company website and ask a trusted adult for help before sharing personal or payment information. Some work platforms require users to be 18 or older.</div>
+</section>
+<section class="wrap">
+  <div class="cta"><div><h2>Make your next step a smart one.</h2><p>Explore free learning first. Earn World will focus on clear information, honest expectations and opportunities people can verify.</p></div><a class="btn" href="#learn">Explore learning guides →</a></div>
+</section>
+</main>
+<footer><div class="footer-inner"><div><strong>Earn World</strong><p>Learn Skills. Find Opportunities. Earn Online.<br>Global reach, with a special focus on Ethiopia.</p></div><div><p><a href="#home">Home</a> · <a href="#opportunities">Opportunities</a> · <a href="#ethiopia">Ethiopia</a> · <a href="#safety">Safety</a></p><p class="small">Prototype website. Not yet published. No jobs or earnings are guaranteed.</p></div></div></footer>
+</div>
+<script>
+const searchInput = document.getElementById('search');
+const categorySelect = document.getElementById('category');
+const items = [...document.querySelectorAll('.opportunity-item')];
+function filterItems() {
+  const term = searchInput.value.trim().toLowerCase();
+  const category = categorySelect.value;
+  items.forEach(item => {
+    const matchesText = item.innerText.toLowerCase().includes(term);
+    const matchesCategory = category === 'all' || item.dataset.category === category;
+    item.hidden = !(matchesText && matchesCategory);
+  });
+}
+searchInput.addEventListener('input', filterItems);
+categorySelect.addEventListener('change', filterItems);
+</script>
+</body>
+</html>
